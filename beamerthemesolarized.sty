@@ -1,12 +1,15 @@
 \mode<presentation>
+
 \usepackage{etoolbox}
 \usepackage{xstring}
+\usepackage{caption}
 
 \SetupKeyvalOptions{%
     family=solarized,
     prefix=solarized@,
 }
 \DeclareBoolOption[false]{dark}
+\DeclareBoolOption[false]{sectionframe} % Default: no frame at a begining of a section
 \DeclareComplementaryOption{light}{dark}
 \ProcessKeyvalOptions*
 
@@ -65,8 +68,8 @@
 \setbeamercolor*{framesubtitle}{fg=solarizedRed}
 \setbeamercolor*{title}{fg=solarizedAccent}
 
-\defbeamertemplate*{title page}{customized}[1][]
-{%
+% Template title page
+\defbeamertemplate*{title page}{customized}[1][]{%
     \begin{center}
         \huge \inserttitle\\
         \vspace{0.2cm}
@@ -82,8 +85,8 @@
 }
 
 % Frame with section title
-\setbeamertemplate{section page}
-{%
+\ifboolexpe{bool {solarized@sectionframe}}{%
+\setbeamertemplate{section page}{%
     \begin{center}
         \large \textcolor{solarizedRed}{Section~\insertsectionnumber.}
         \\
@@ -92,7 +95,8 @@
 }
 \def\sectionpage{\usebeamertemplate*{section page}}
 \AtBeginSection{\frame{\sectionpage}}
-
+}{}
+% Function converting numbers to letters for table of content numbering
 \newcommand*{\myalpha}[1]{%
     \IfEqCase{#1}{%
         {1}{a}%
@@ -120,8 +124,7 @@
 \setbeamercolor{headline}{bg=solarizedRebase01,fg=solarizedRebase1}
 
 % Figure Captions
-\usepackage{caption}
-\captionsetup[figure]{labelformat=empty} % Pas de figure:
+\captionsetup[figure]{labelformat=empty} % No "Figure"
 \captionsetup{font={color=solarizedCyan,scriptsize},labelfont={color=solarizedCyan,scriptsize}} % Cyan color, small font
 
 % Structure elements use css style for header 
@@ -150,7 +153,6 @@
 \setbeamercolor{fine separation line}{fg=solarizedRebase0}
 
 \setbeamercolor*{section in sidebar shaded}{parent=palette sidebar primary}
-% a.hover.navlink in CSS
 \setbeamercolor*{section in sidebar}{parent=palette sidebar primary, fg=solarizedRebase02}
 \setbeamercolor*{subsection in sidebar}{parent=section in sidebar}
 \setbeamercolor*{subsection in sidebar shaded}{parent=section in sidebar shaded}
