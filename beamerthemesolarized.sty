@@ -88,7 +88,7 @@
 \ifboolexpe{bool {solarized@sectionframe}}{%
 \setbeamertemplate{section page}{%
     \begin{center}
-        \large \textcolor{solarizedRed}{Section~\insertsectionnumber.}
+        \large \textcolor{solarizedRed}{Part~\insertsectionnumber.}
         \\
         \Huge \insertsection%
     \end{center}
@@ -127,10 +127,8 @@
 \captionsetup[figure]{labelformat=empty} % No "Figure"
 \captionsetup{font={color=solarizedCyan,scriptsize},labelfont={color=solarizedCyan,scriptsize}} % Cyan color, small font
 
-% Structure elements use css style for header 
 \setbeamercolor*{structure}{bg=solarizedRebase01, fg=solarizedRebase1}
 
-% Do not mess with subtle colors in palette. I don't like it. 
 \setbeamercolor*{palette primary}{bg=solarizedRebase01, fg=solarizedRebase1}
 \setbeamercolor*{palette secondary}{bg=solarizedRebase01, fg=solarizedRebase1}
 \setbeamercolor*{palette tertiary}{bg=solarizedRebase01, fg=solarizedRebase1}
@@ -141,7 +139,7 @@
 \setbeamercolor{block body}{parent=normal text, bg=solarizedRebase02}
 
 % same as footline
-% Set Sidebar and footline to use the css style for footer
+% Set Sidebar and footline colors
 \setbeamercolor*{sidebar}{parent=headline}
 \setbeamercolor*{palette sidebar primary}{fg=solarizedRebase01, fg=solarizedRebase1}
 \setbeamercolor*{palette sidebar secondary}{fg=solarizedRebase01, fg=solarizedRebase1}
