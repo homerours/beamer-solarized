@@ -1,4 +1,4 @@
-\beamer@endinputifotherversion {3.24pt}
+\beamer@endinputifotherversion {3.33pt}
 \select@language {english}
 \beamer@sectionintoc {1}{On the movement of small particles in a stationnary liquid}{4}{0}{1}
 \beamer@subsectionintoc {1}{1}{System description}{5}{0}{1}
