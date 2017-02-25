@@ -1,2 +1,2 @@
-<h2>BeamerSolarizedTheme</h2>
-A solarized theme for Beamer LaTeX (modified from jrnold/beamercolortheme).
+# Beamer Solarized Theme
+A solarized theme for Beamer LaTeX (modified from [jrnold/beamercolortheme](https://github.com/jrnold/beamercolorthemesolarized)).

@@ -1,9 +1,18 @@
 \mode<presentation>
 
-\usepackage{etoolbox}
-\usepackage{xstring}
+
+\usepackage{etoolbox} % important
+%\usepackage{xstring}
 \usepackage{caption}
 \captionsetup{compatibility=false}
+
+% Maths font
+\usefonttheme[onlymath]{serif}
+%\DeclareMathSizes{10}{14}{10}{8}
+%\DeclareMathSizes{display size}{text size}{script size}{scriptscript size}.
+
+% Margins
+\setbeamersize{text margin left=0.7cm,text margin right=0.7cm}
 
 \SetupKeyvalOptions{%
     family=solarized,
@@ -59,7 +68,7 @@
 
 
 % Text color
-\setbeamercolor{normal text}{fg=solarizedRebase2, bg=solarizedRebase03}
+\setbeamercolor{normal text}{fg=solarizedRebase3, bg=solarizedRebase03}
 \setbeamercolor{alerted text}{fg=solarizedAccent}
 \setbeamercolor{example text}{fg=solarizedRebase1, bg=solarizedRebase02}
 
@@ -68,6 +77,16 @@
 \setbeamercolor*{frametitle}{fg=solarizedAccent}
 \setbeamercolor*{framesubtitle}{fg=solarizedRed}
 \setbeamercolor*{title}{fg=solarizedAccent}
+
+% Font size
+%\setbeamerfont{frametitle}{size=\scriptsize}
+\setbeamerfont{framesubtitle}{size=\normalsize}
+
+% References
+%\hypersetup{hyperindex=false,bookmarksopen=false,colorlinks=true,urlcolor=solarizedRed,citecolor=solarizedCyan,allcolors=solarizedCyan,linkcolor=solarizedCyan}
+\let\oldcite=\cite
+\renewcommand{\cite}[1]{\textcolor{solarizedCyan}{\oldcite{#1}}}
+\renewcommand{\citep}[1]{(\textcolor{solarizedCyan}{\oldcite{#1}})}
 
 % Template title page
 \defbeamertemplate*{title page}{customized}[1][]{%
@@ -80,7 +99,7 @@
         \vspace{1cm}
         \usebeamerfont{author}\insertauthor\\
         \vspace{0.1cm}
-        \usebeamerfont{institute}\insertinstitute\\
+        \usebeamerfont{institute}\insertinstitute
         \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic%
     \end{center}
 }
@@ -91,12 +110,16 @@
     \begin{center}
         \large \textcolor{solarizedRed}{Part~\insertsectionnumber.}
         \\
-        \Huge \insertsection%
+		\vspace{0.3cm}
+		{\hypersetup{hidelinks}
+			\Huge \insertsection%
+		}
     \end{center}
 }
 \def\sectionpage{\usebeamertemplate*{section page}}
 \AtBeginSection{\frame{\sectionpage}}
 }{}
+
 % Function converting numbers to letters for table of content numbering
 \newcommand*{\myalpha}[1]{%
     \IfEqCase{#1}{%
@@ -114,8 +137,9 @@
         {12}{l}%
     }
 }
+
 % Table of contents
-\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\textcolor{solarizedRed}{\inserttocsection}}
+\setbeamertemplate{section in toc}{{\hypersetup{hidelinks}\large \inserttocsectionnumber.~\textcolor{solarizedRed}{\inserttocsection}}}
 \setbeamertemplate{subsection in toc}{\hspace{0.8em} \textcolor{solarizedRebase1}{\myalpha{\inserttocsubsectionnumber}.}~\inserttocsubsection\\}
 
 % Header and footer from CSS 
@@ -155,6 +179,14 @@
 \setbeamercolor*{section in sidebar}{parent=palette sidebar primary, fg=solarizedRebase02}
 \setbeamercolor*{subsection in sidebar}{parent=section in sidebar}
 \setbeamercolor*{subsection in sidebar shaded}{parent=section in sidebar shaded}
+
+% Bibliography
+%\setbeamertemplate{bibliography item}[triangle]
+\setbeamertemplate{bibliography item}{\hspace{+0.4cm}\scriptsize$\blacktriangleright$}
+\setbeamercolor*{bibliography entry title}{fg=solarizedAccent}
+\setbeamercolor*{bibliography entry author}{fg=solarizedMagenta}
+%\setbeamercolor*{bibliography entry location}{fg=black}
+%\setbeamercolor*{bibliography entry note}{fg=black}
 
 \mode
 <all>
